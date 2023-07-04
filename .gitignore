@@ -2,7 +2,7 @@ HELP.md
 .gradle
 build/
 target/
-
+servlet/
 ### STS ###
 .apt_generated
 .classpath
