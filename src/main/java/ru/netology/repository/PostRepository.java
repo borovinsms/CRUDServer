@@ -1,17 +1,16 @@
 package ru.netology.repository;
 
-import org.springframework.stereotype.Repository;
 import ru.netology.exception.NotFoundException;
 import ru.netology.model.Post;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicLong;
 
-// Stub
-@Repository
 public class PostRepository implements IPostRepository {
 
     protected static final long START_ID = 0L;
@@ -27,7 +26,7 @@ public class PostRepository implements IPostRepository {
 
     @Override
     public List<Post> all() {
-        return List.copyOf(posts.values());
+        return Collections.synchronizedList(new ArrayList<>(posts.values()));
     }
 
     @Override
